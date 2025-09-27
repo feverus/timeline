@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  padding: 20px;
+  .buttonsCircle {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .circleButton {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #4a90e2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    transform-origin: center;
+    &:hover {
+      background: #357abd;
+      transform: translateZ(0) scale(1.1) !important;
+    }
+
+    &.selected {
+      background: #2c5aa0;
+      box-shadow: 0 0 10px rgba(42, 100, 200, 0.5);
+    }
+  }
+}

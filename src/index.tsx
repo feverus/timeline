@@ -1,20 +1,8 @@
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'mobx-react'
-import Main from './components/main';
-import defaultStore from './store/defaultStore'
+import ReactDOM from 'react-dom/client'
 
-import  './index.module.scss'
+import { Demo } from '~/features'
+import './index.module.scss'
 
-const stores = {
-  defaultStore,
-}
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
-  <Provider {...stores}>
-    <Main />
-  </Provider>
-)
+root.render(<Demo>timeline</Demo>)

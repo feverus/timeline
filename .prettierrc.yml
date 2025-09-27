@@ -1,0 +1,20 @@
+---
+printWidth: 140
+proseWrap: always
+tabWidth: 2
+
+overrides:
+  - files: '*.{ts,tsx}'
+    options:
+      singleQuote: true
+      bracketSpacing: true
+      trailingComma: all
+      semi: false
+      tabWidth: 4
+  - files: '*.{css,scss}'
+    options:
+      singleQuote: false
+      bracketSpacing: true
+      trailingComma: all
+      semi: false
+      tabWidth: 2

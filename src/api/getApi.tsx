@@ -1,13 +1,11 @@
-import ky from 'ky';
+import { sleep, getRandomInteger, shuffleArray } from '~/utils'
+import { mock } from '~/api'
 
-import * as I from '../store/storeInterfaces';
-import urlApi  from './urlApi';
-
-export const getApi = async (): Promise<any|string> => {
-	try {
-		const json:any = await ky.get(urlApi+"").json()
-		return json
-	} catch (error) {
-        return (error as Error).message
-    }
+/**
+ * Имитация получения данных для компонента TimelineData от внешнего сервиса.
+ * Добавлена случайная задержка и случайная выборка элементов на верхнем уровне для демонстрации.
+ */
+export const getTimelineData = async (): Promise<any | string> => {
+    await sleep(getRandomInteger(100, 2000))
+    return shuffleArray(mock)
 }
