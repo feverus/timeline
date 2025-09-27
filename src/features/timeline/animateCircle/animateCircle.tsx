@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import cn from 'classnames'
 
 import { AnimateCircleProps } from './animateCircle.types'
@@ -8,17 +8,23 @@ const CIRCLE_RADIUS = 265
 const ANGLE_SHIFT = 20
 
 export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: AnimateCircleProps) => {
+    const previousSelectedIndex = useRef(0)
     const [rotation, setRotation] = useState(0)
     const buttonsCount = buttons.length
 
-    const handleButtonClick = (index: number) => {
-        if (index === selectedIndex) {
+    useEffect(() => {
+        console.log('🚀 ~ AnimateCircle ~ selectedIndex:', selectedIndex)
+        update(selectedIndex)
+    }, [selectedIndex])
+
+    const update = (index: number) => {
+        if (index === previousSelectedIndex.current) {
             return
         }
 
         // Вычисляем угол поворота для перемещения выбранной кнопки наверх
         const angleStep = 360 / buttonsCount
-        const currentAngle = selectedIndex * angleStep
+        const currentAngle = previousSelectedIndex.current * angleStep
         const targetAngle = index * angleStep
 
         // Вычисляем разницу углов и корректируем для плавного вращения
@@ -33,6 +39,11 @@ export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: Anim
         }
 
         setRotation(rotation - angleDiff)
+        previousSelectedIndex.current = index
+    }
+
+    const handleButtonClick = (index: number) => {
+        update(index)
         setSelectedIndex(index)
     }
 
@@ -68,7 +79,7 @@ export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: Anim
                         onClick={() => handleButtonClick(index)}
                         disabled={index === selectedIndex}
                     >
-                        <div className={styles.circleButton}>{index}</div>
+                        <div className={styles.circleButton}>{index + 1}</div>
                         <div className={styles.text}>{text}</div>
                     </button>
                 )
