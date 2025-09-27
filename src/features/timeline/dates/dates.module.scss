@@ -1,0 +1,11 @@
+.wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 200px;
+  line-height: 80%;
+  letter-spacing: -0.02em;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.wrapper {
+  width: 1440px;
+  height: 100%;
+  border-left: 1px rgba(var(--border_base_color), 0.1) solid;
+  border-right: 1px rgba(var(--border_base_color), 0.1) solid;
+  position: relative;
+  place-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .verticalLine {
+    content: "";
+    width: 1px;
+    height: 100vh;
+    border-right: 1px rgba(var(--border_base_color), 0.1) solid;
+    position: absolute;
+  }
+  .horizontalLine {
+    content: "";
+    width: 100vw;
+    height: 1px;
+    border-bottom: 1px rgba(var(--border_base_color), 0.1) solid;
+    position: absolute;
+  }
+}

@@ -1,41 +1,77 @@
+$circleRadius: 265px;
+$buttonRadius: 28px;
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
-  padding: 20px;
-  .buttonsCircle {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .circleButton {
+  height: $circleRadius * 2;
+  width: $circleRadius * 2;
+  border-radius: 50%;
+  border: 1px rgba(var(--border_base_color), 0.2) solid;
+  position: absolute;
+  top: 215px;
+  left: calc(50% - $circleRadius);
+  button {
     position: absolute;
-    width: 80px;
-    height: 40px;
+    width: $buttonRadius * 2;
+    height: $buttonRadius * 2;
     border: none;
-    border-radius: 20px;
-    background: #4a90e2;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+    background: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    transition: all 0.5s ease;
     transform-origin: center;
-    &:hover {
-      background: #357abd;
-      transform: translateZ(0) scale(1.1) !important;
+    cursor: pointer;
+    &:disabled {
+      cursor: auto;
     }
-
+    .circleButton {
+      position: absolute;
+      width: $buttonRadius * 2;
+      height: $buttonRadius * 2;
+      border: 1px rgba(var(--border_base_color), 0.5) solid;
+      border-radius: 50%;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 150%;
+      color: #42567a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease;
+      transform-origin: center;
+      transform: translateZ(0) scale(0.1);
+      background-color: rgba(var(--border_base_color), 1);
+    }
+    &:hover .circleButton {
+      background-color: var(--main_bg_color);
+      transform: translateZ(0) scale(1);
+    }
+    .text {
+      pointer-events: none;
+      transition-delay: 0s;
+      opacity: 0;
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 150%;
+      color: #42567a;
+      position: absolute;
+      left: calc($buttonRadius * 2 + 20px);
+    }
     &.selected {
-      background: #2c5aa0;
-      box-shadow: 0 0 10px rgba(42, 100, 200, 0.5);
+      .circleButton {
+        background-color: var(--main_bg_color);
+        transform: translateZ(0) scale(1);
+      }
+      .text {
+        opacity: 1;
+        transition-delay: 0.5s;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import { getRandomInteger } from '~Utils'
+import { getRandomInteger } from './getRandomInteger'
 
 export const shuffleArray = <T>(array: T[]) => {
     if (array.length < 2) {
@@ -16,7 +16,7 @@ export const shuffleArray = <T>(array: T[]) => {
         ;[indexes[i], indexes[j]] = [indexes[j], indexes[i]]
     }
     for (let index = 0; index < countToSelect; index++) {
-        result.push(array[index])
+        result.push(array[indexes[index]])
     }
 
     return result

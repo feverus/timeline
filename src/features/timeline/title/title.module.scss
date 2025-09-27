@@ -1,0 +1,15 @@
+.wrapper {
+  position: absolute;
+  top: 170px;
+  left: 0;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 120%;
+  color: #42567a;
+  width: 430px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}

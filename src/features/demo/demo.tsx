@@ -11,7 +11,7 @@ export const Demo = ({ children }: DemoProps) => {
     }
     return (
         <>
-            <button onClick={update} className={styles.updateButton}>
+            <button onClick={update} className={styles.updateButton} disabled={!useTimeline.getState().timelineData.length}>
                 Обновить
             </button>
             {children}

@@ -4,12 +4,13 @@
   "homepage": ".",
   "private": false,
   "dependencies": {
-    "zustand": "5.0.4",
+    "classnames": "2.5.1",
     "immer": "10.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
-    "classnames": "2.5.1"
+    "swiper": "^12.0.2",
+    "zustand": "5.0.4"
   },
   "scripts": {
     "start": "craco start",
@@ -39,10 +40,10 @@
     "@craco/craco": "7.1.0",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
-    "sass": "1.55.0",
-    "typescript-plugin-css-modules": "3.4.0",
     "prettier": "2.8.7",
-    "typescript": "4.7.4"
+    "sass": "1.55.0",
+    "typescript": "4.7.4",
+    "typescript-plugin-css-modules": "3.4.0"
   },
   "compilerOptions": {
     "plugins": [

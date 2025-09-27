@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
-type TimelineDataItem = {
+export type TimelineDataItem = {
     id: number
     year: number
     description: string
@@ -33,7 +33,8 @@ export const useTimeline = create(
 
             setTimelineData: (data) => {
                 set((state) => {
-                    state.timelineData = data
+                    const sorted = data.map((item) => ({ ...item, data: [...item.data].sort((a, b) => a.year - b.year) }))
+                    state.timelineData = sorted
                 })
             },
         })),

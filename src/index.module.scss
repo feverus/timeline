@@ -1,14 +1,50 @@
-html, body, div[id=root] {
-	height: 100%;
-	--main_bg_color: $fff;
+html,
+body,
+div[id="root"] {
+  height: 100%;
 }
 body {
-	background: $main_bg_var(--main_bg_color);
-	padding: 0%;
-	margin: 0;
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 16px;
+  --font-family: "PT Sans", sans-serif;
+  --second-family: "Bebas Neue", sans-serif;
+  --main_bg_color: #f4f5f9;
+  --border_base_color: 66, 86, 122;
+
+  background: var(--main_bg_color);
+  padding: 0%;
+  margin: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.pt-sans-regular {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pt-sans-bold {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.pt-sans-regular-italic {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.pt-sans-bold-italic {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

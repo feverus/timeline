@@ -6,6 +6,6 @@ import { mock } from '~/api'
  * Добавлена случайная задержка и случайная выборка элементов на верхнем уровне для демонстрации.
  */
 export const getTimelineData = async (): Promise<any | string> => {
-    await sleep(getRandomInteger(100, 2000))
+    //await sleep(getRandomInteger(100, 2000))
     return shuffleArray(mock)
 }
