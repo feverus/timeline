@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Loader } from '../components'
 import { Title } from './title'
@@ -15,6 +15,10 @@ export const Timeline = ({ timelineData }: TimelineProps) => {
     const { data } = selectedIndex < selectedCount ? timelineData[selectedIndex] : { data: [] }
     const increase = () => (selectedIndex < selectedCount - 1 ? setSelectedIndex(selectedIndex + 1) : undefined)
     const reduce = () => (selectedIndex > 0 ? setSelectedIndex(selectedIndex - 1) : undefined)
+
+    useEffect(() => {
+        setSelectedIndex(0)
+    }, [timelineData])
 
     if (!data.length) {
         return <Loader />
