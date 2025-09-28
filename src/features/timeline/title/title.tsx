@@ -4,7 +4,7 @@ import styles from './title.module.scss'
 export const Title = () => {
     return (
         <div className={styles.wrapper}>
-            <img src={titleBorder} /> <span>Исторические даты</span>
+            <img src={titleBorder} alt="|"/> <span>Исторические даты</span>
         </div>
     )
 }

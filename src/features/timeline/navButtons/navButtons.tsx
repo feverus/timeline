@@ -9,10 +9,10 @@ export const NavButtons = ({ selectedIndex, selectedCount, reduce, increase }: N
             <div className={styles.status}>{`${addZero(selectedIndex + 1)}/${addZero(selectedCount)}`}</div>
             <div className={styles.buttons}>
                 <button onClick={reduce} disabled={!reduce}>
-                    <img src={navArrow} />
+                    <img src={navArrow} alt="<" />
                 </button>
                 <button onClick={increase} disabled={!increase}>
-                    <img src={navArrow} />
+                    <img src={navArrow} alt=">" />
                 </button>
             </div>
         </div>

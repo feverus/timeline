@@ -1,5 +1,5 @@
 import { useSwiper } from 'swiper/react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import swiperArrow from '~/assets/swiperArrow.svg'
 import styles from './swiperNavigation.module.scss'
@@ -9,10 +9,10 @@ export const SwiperNavigation = () => {
     const [isBeginning, setIsBeginning] = useState(swiper.isBeginning)
     const [isEnd, setIsEnd] = useState(swiper.isEnd)
 
-    const updateState = () => {
+    const updateState = useCallback(() => {
         setIsBeginning(swiper.isBeginning)
         setIsEnd(swiper.isEnd)
-    }
+    }, [swiper])
 
     useEffect(() => {
         updateState()
@@ -24,18 +24,18 @@ export const SwiperNavigation = () => {
             swiper.off('reachBeginning', updateState)
             swiper.off('reachEnd', updateState)
         }
-    }, [swiper])
+    }, [swiper, updateState])
 
     return (
         <>
             <div className={styles.left}>
                 <button disabled={isBeginning} onClick={() => swiper.slidePrev()}>
-                    <img src={swiperArrow} />
+                    <img src={swiperArrow} alt="<" />
                 </button>
             </div>
             <div className={styles.right}>
                 <button disabled={isEnd} onClick={() => swiper.slideNext()}>
-                    <img src={swiperArrow} />
+                    <img src={swiperArrow} alt=">" />
                 </button>
             </div>
         </>

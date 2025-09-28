@@ -1,6 +1,6 @@
 .wrapper {
   position: absolute;
-  top: 70px;
+  top: calc(var(--base-top) - 35px);
   left: 0;
   font-family: var(--font-family);
   font-weight: 700;
@@ -12,4 +12,13 @@
   display: flex;
   align-items: center;
   gap: 80px;
+}
+@media (max-width: 1280px) {
+  .wrapper {
+    font-size: 20px;
+    width: 123px;
+    img {
+      display: none;
+    }
+  }
 }

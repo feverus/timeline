@@ -13,7 +13,6 @@ export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: Anim
     const buttonsCount = buttons.length
 
     useEffect(() => {
-        console.log('🚀 ~ AnimateCircle ~ selectedIndex:', selectedIndex)
         update(selectedIndex)
     }, [selectedIndex])
 
@@ -68,7 +67,6 @@ export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: Anim
         >
             {buttons.map((text, index) => {
                 const position = getButtonPosition(index, buttonsCount)
-                console.log(text, index, selectedIndex)
                 return (
                     <button
                         key={index}

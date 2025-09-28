@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { AnimatedIntegerProps } from './animatedInteger.types'
 
-export const AnimatedInteger = ({ value, duration = 1000, maxSteps = 100 }: AnimatedIntegerProps) => {
-    //console.log("🚀 ~ AnimatedInteger ~ value:", value)
+export const AnimatedInteger = ({ value, duration = 1000, maxSteps = 100, color = '#42567A' }: AnimatedIntegerProps) => {
     const [displayValue, setDisplayValue] = useState(value)
     const previousValueRef = useRef(value)
     const animationRef = useRef<NodeJS.Timeout | null>(null)
@@ -28,7 +27,6 @@ export const AnimatedInteger = ({ value, duration = 1000, maxSteps = 100 }: Anim
         // Запускаем новую анимацию
         animationRef.current = setInterval(() => {
             currentStep++
-            //console.log('🚀 ~ AnimatedInteger ~ currentStep:', currentStep)
 
             if (currentStep <= steps) {
                 setDisplayValue((prev) => prev + stepValue)
@@ -45,5 +43,5 @@ export const AnimatedInteger = ({ value, duration = 1000, maxSteps = 100 }: Anim
         }
     }, [value, duration, maxSteps])
 
-    return <span>{displayValue}</span>
+    return <span style={{ color }}>{displayValue}</span>
 }

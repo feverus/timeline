@@ -5,6 +5,7 @@
   top: calc(var(--base-top) + (var(--animate-circle-radius) * 2) - 40px);
   left: 80px;
   gap: 20px;
+  z-index: 2;
   .status {
     font-family: var(--font-family);
     font-weight: 400;
@@ -26,6 +27,7 @@
       justify-content: center;
       background-color: transparent;
       background-image: url("../../../assets/navArrowBg.svg");
+      background-size: 100%;
       opacity: 1;
       transition: opacity 0.5s ease;
       &:first-child {
@@ -36,7 +38,24 @@
         box-shadow: 0 0 15px 0 rgba(122, 122, 122, 0.8);
       }
       &:disabled {
-        opacity: 0;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .wrapper {
+    left: 0;
+    top: calc(50% + 200px);
+    .buttons {
+      gap: 8px;
+      button {
+        width: 25px;
+        height: 25px;
+        img {
+          transform: scale(0.5);
+        }
       }
     }
   }
