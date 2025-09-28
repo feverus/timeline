@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import cn from 'classnames'
 
 import { AnimateCircleProps } from './animateCircle.types'
@@ -12,34 +12,37 @@ export const AnimateCircle = ({ buttons, selectedIndex, setSelectedIndex }: Anim
     const [rotation, setRotation] = useState(0)
     const buttonsCount = buttons.length
 
+    const update = useCallback(
+        (index: number) => {
+            if (index === previousSelectedIndex.current) {
+                return
+            }
+
+            // Вычисляем угол поворота для перемещения выбранной кнопки наверх
+            const angleStep = 360 / buttonsCount
+            const currentAngle = previousSelectedIndex.current * angleStep
+            const targetAngle = index * angleStep
+
+            // Вычисляем разницу углов и корректируем для плавного вращения
+            let angleDiff = targetAngle - currentAngle
+
+            // Выбираем кратчайший путь вращения
+            if (angleDiff > 180) {
+                angleDiff -= 360
+            }
+            if (angleDiff < -180) {
+                angleDiff += 360
+            }
+
+            setRotation(rotation - angleDiff)
+            previousSelectedIndex.current = index
+        },
+        [buttonsCount, rotation],
+    )
+
     useEffect(() => {
         update(selectedIndex)
-    }, [selectedIndex])
-
-    const update = (index: number) => {
-        if (index === previousSelectedIndex.current) {
-            return
-        }
-
-        // Вычисляем угол поворота для перемещения выбранной кнопки наверх
-        const angleStep = 360 / buttonsCount
-        const currentAngle = previousSelectedIndex.current * angleStep
-        const targetAngle = index * angleStep
-
-        // Вычисляем разницу углов и корректируем для плавного вращения
-        let angleDiff = targetAngle - currentAngle
-
-        // Выбираем кратчайший путь вращения
-        if (angleDiff > 180) {
-            angleDiff -= 360
-        }
-        if (angleDiff < -180) {
-            angleDiff += 360
-        }
-
-        setRotation(rotation - angleDiff)
-        previousSelectedIndex.current = index
-    }
+    }, [selectedIndex, update])
 
     const handleButtonClick = (index: number) => {
         update(index)
