@@ -1,4 +1,4 @@
-import { AnimatedInteger } from '../animatedInteger'
+import { AnimatedInteger } from './animatedInteger'
 import { DatesProps } from './dates.types'
 import styles from './dates.module.scss'
 

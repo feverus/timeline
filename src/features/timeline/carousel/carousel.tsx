@@ -1,24 +1,26 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules'
 import 'swiper/css'
+import 'swiper/css/navigation'
 
-import { TimelineDataItem } from '~/store'
+import { useTransition } from '~/hooks'
+import { SwiperNavigation } from './swiperNavigation'
+import { Slide } from './swiperSlide'
 import { СarouselProps } from './carousel.types'
 import styles from './carousel.module.scss'
 
 export const Сarousel = ({ data }: СarouselProps) => {
-    const getSlide = ({ year, description }: TimelineDataItem) => (
-        <div className={styles.wrapper}>
-            <span className={styles.year}>{year}</span>
-            <span className={styles.description}>{description}</span>
-        </div>
-    )
+    const { currentData, transitionStyle } = useTransition({ data })
     return (
-        <Swiper>
-            spaceBetween={50}
-            slidesPerView={3}
-            {data.map((item) => (
-                <SwiperSlide>{getSlide(item)}</SwiperSlide>
-            ))}
-        </Swiper>
+        <>
+            <Swiper className={styles.wrapper} spaceBetween={50} slidesPerView={3} modules={[Navigation]} style={transitionStyle}>
+                {currentData.map(({ id, year, description }) => (
+                    <SwiperSlide key={id}>
+                        <Slide year={year} description={description} />
+                    </SwiperSlide>
+                ))}
+                <SwiperNavigation key={currentData.length} />
+            </Swiper>
+        </>
     )
 }

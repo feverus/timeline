@@ -1,4 +1,7 @@
+
 .wrapper {
+  --date-height: 160px;
+  height: var(--date-height);
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -8,4 +11,5 @@
   line-height: 80%;
   letter-spacing: -0.02em;
   text-align: center;
+  top: calc(var(--base-top) + var(--animate-circle-radius) - (var(--date-height) / 2));
 }

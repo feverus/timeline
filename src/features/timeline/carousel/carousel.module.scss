@@ -1,18 +1,5 @@
 .wrapper {
-  display: flex;
-  .year {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 120%;
-    text-transform: uppercase;
-    color: #3877ee;
-  }
-  .description {
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 150%;
-    color: #42567a;
-  }
+  position: relative;
+  top: calc(var(--animate-circle-radius) + 100px);
+  padding: 0 80px;
 }

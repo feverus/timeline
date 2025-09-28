@@ -1,11 +1,10 @@
 .wrapper {
-  width: 1440px;
-  height: 100%;
+  width: min(1440px, calc(100% - 40px));
+  min-height: 100%;
   border-left: 1px rgba(var(--border_base_color), 0.1) solid;
   border-right: 1px rgba(var(--border_base_color), 0.1) solid;
   position: relative;
   place-self: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,5 +21,6 @@
     height: 1px;
     border-bottom: 1px rgba(var(--border_base_color), 0.1) solid;
     position: absolute;
+    top: calc(var(--base-top) + var(--animate-circle-radius));
   }
 }

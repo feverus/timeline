@@ -13,8 +13,8 @@ export const Timeline = ({ timelineData }: TimelineProps) => {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const selectedCount = useMemo(() => timelineData.length, [timelineData.length])
     const { data } = selectedIndex < selectedCount ? timelineData[selectedIndex] : { data: [] }
-    const increase = () => (selectedIndex < selectedCount - 1 ? setSelectedIndex(selectedIndex + 1) : undefined)
-    const reduce = () => (selectedIndex > 0 ? setSelectedIndex(selectedIndex - 1) : undefined)
+    const increase = selectedIndex < selectedCount - 1 ? () => setSelectedIndex(selectedIndex + 1) : undefined
+    const reduce = selectedIndex > 0 ? () => setSelectedIndex(selectedIndex - 1) : undefined
 
     useEffect(() => {
         setSelectedIndex(0)

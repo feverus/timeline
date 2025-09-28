@@ -2,6 +2,42 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 700px;
-  left: 80px
+  top: calc(var(--base-top) + (var(--animate-circle-radius) * 2) - 40px);
+  left: 80px;
+  gap: 20px;
+  .status {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    color: #42567a;
+  }
+  .buttons {
+    display: flex;
+    gap: 20px;
+    button {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      background-image: url("../../../assets/navArrowBg.svg");
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      &:first-child {
+        transform: rotate(180deg);
+      }
+      &:hover:enabled {
+        cursor: pointer;
+        box-shadow: 0 0 15px 0 rgba(122, 122, 122, 0.8);
+      }
+      &:disabled {
+        opacity: 0;
+      }
+    }
+  }
 }

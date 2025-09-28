@@ -1,21 +1,19 @@
-$circleRadius: 265px;
-$buttonRadius: 28px;
-
 .wrapper {
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: $circleRadius * 2;
-  width: $circleRadius * 2;
+  height: calc(var(--animate-circle-radius) * 2);
+  width: calc(var(--animate-circle-radius) * 2);
   border-radius: 50%;
   border: 1px rgba(var(--border_base_color), 0.2) solid;
   position: absolute;
-  top: 215px;
-  left: calc(50% - $circleRadius);
+  top: var(--base-top);
+  left: calc(50% - var(--animate-circle-radius));
   button {
     position: absolute;
-    width: $buttonRadius * 2;
-    height: $buttonRadius * 2;
+    width: calc(var(--animate-button-radius) * 2);
+    height: calc(var(--animate-button-radius) * 2);
     border: none;
     background: none;
     padding: 0;
@@ -30,8 +28,8 @@ $buttonRadius: 28px;
     }
     .circleButton {
       position: absolute;
-      width: $buttonRadius * 2;
-      height: $buttonRadius * 2;
+      width: calc(var(--animate-button-radius) * 2);
+      height: calc(var(--animate-button-radius) * 2);
       border: 1px rgba(var(--border_base_color), 0.5) solid;
       border-radius: 50%;
       font-family: var(--font-family);
@@ -61,7 +59,7 @@ $buttonRadius: 28px;
       line-height: 150%;
       color: #42567a;
       position: absolute;
-      left: calc($buttonRadius * 2 + 20px);
+      left: calc(var(--animate-button-radius) * 2 + 20px);
     }
     &.selected {
       .circleButton {
